@@ -1,0 +1,320 @@
+html
+{
+    -moz-user-select     : none;
+    -khtml-user-select   : none;
+    -webkit-user-select  : none;
+    -o-user-select       : none;
+    user-select          : none;
+}
+#simscreen
+{
+position: relative;
+left:0px;
+top:0px;
+height: 600px;
+width:800px;
+border:solid 1px;
+}
+
+#copyright{
+position: absolute;
+left:50px;
+top: 580px;
+font-family: verdana;
+font-size:12px;
+}
+
+#title{
+position:relative;
+left: 0px;
+top: 0px;
+height:40px;
+font-size: 24px;
+text-align:center;
+background-color: black;
+font-family: verdana;
+color: White;
+text-transform: uppercase;
+}
+
+#title h3{
+padding-top:2px;
+margin:0px;}
+
+#question-div{
+	position: absolute;
+	left:300px;
+	top:350px;
+	width:300px;
+	height:120px;
+	border:solid 1px gray;
+	background-color: gray;
+	filter: alpha(opacity=55);
+	color:white;
+	visibility:hidden;
+}
+
+.simsubscreen
+{
+position:absolute;
+left: 50px;
+top: 50px;
+height:530px;
+width:745px;
+}
+
+.incanvas
+{
+margin:5px 0 0 5px;
+padding:0;
+}
+#nextButton{
+    position: absolute;
+    left: 750px;
+    top: 530px;
+cursor:pointer;
+}
+#nextButton1{
+    position: absolute;
+    left: 750px;
+    top: 530px;
+cursor:pointer;
+}
+
+#prevButton{
+    position: absolute;
+    left: 0px;
+    top: 532px;
+cursor:pointer;
+}
+
+
+.steptext{
+display:inline;}
+
+.steptext-6{
+display:inline;}
+
+.steptext-2{display:inline;}
+
+.circlebg
+{
+border-radius:100%;
+font-size:25px;
+color:#fff;
+text-align:center;
+background:#000
+}
+.step{
+    position: relative;
+    top:-40px;
+    left:-50px;
+    width: 800px;
+    height: 560px;
+}
+
+svg
+{
+    width: 675px;
+    height: 525px;
+    position: absolute;
+    transform: translate(62.5px,17.5px);
+}
+.svg2
+{
+    width: 730px;
+    height: 640px;
+    position: absolute;
+    transform: translate(-2.5px,-60px);
+}
+.svg3
+{
+    width: 675px;
+    height: 450px;
+    position: absolute;
+    transform: translate(62.5px,82.5px);
+}
+.draw
+{
+    stroke: black;
+    fill: grey;
+}
+.drawrepeat
+{
+    stroke: black;
+}
+.drawsupport{stroke: grey;}
+
+@keyframes animate
+{
+   from
+   {
+       stroke-linecap: round;
+   }
+    to
+    {
+        stroke-linecap: round;
+        stroke-dashoffset: 0;
+
+    }
+}
+@keyframes animate1
+{
+    0%{
+        stroke: #000;
+        fill: transparent;
+
+    }
+    99%{ stroke: #000;
+        fill: transparent;
+        opacity: 100%;
+        stroke-dashoffset: 0;}
+    100%
+    {
+        stroke: #000;
+        fill: transparent;
+        opacity: 10%;
+        stroke-dashoffset: 0;
+
+    }
+}
+@keyframes animatelast
+{
+    0%{
+        stroke: #000;
+        fill: transparent;
+
+    }
+
+    100%
+    {
+        stroke: #000;
+        fill: transparent;
+        stroke-dashoffset: 0;
+
+    }
+}
+
+@keyframes animateimgtb
+{
+    0%     {     left: 61px;      }
+    5.08%  {     left: 679.75px;  }
+    6.30%  {     left: 679.75px;  }
+    10.67% {     left: 61px;      }
+    11.28% {     left: 61px;      }
+    16.16% {     left: 679.75px;  }
+    16.67% {     left: 679.75px;  }
+    21.60% {     left: 61px;      }
+    22.12% {     left: 61px;      }
+    27.01% {     left: 679.75px;  }
+    27.47% {     left: 679.75px;  }
+    32.43% {     left: 61px;      }
+    32.81% {     left: 61px;      }
+    52.27% {     left: 183.025px; }
+    82.13% {     left: 546.475px; }
+    99.5%  {     left: 679.75px;  }
+    100%   {     left: 61px;      }
+}
+@keyframes animateimg
+{
+    0%     {     left: 61px;      }
+    5.72%  {     left: 679.75px;  }
+    6.52%  {     left: 679.75px;  }
+    11.92% {     left: 61px;      }
+    12.55% {     left: 61px;      }
+    18.12% {     left: 679.75px;  }
+    18.67% {     left: 679.75px;  }
+    24.28% {     left: 61px;      }
+    24.70% {     left: 61px;      }
+    46.68% {     left: 183.025px; }
+    78.45% {     left: 546.475px; }
+    99.5%  {     left: 679.75px;  }
+    100%   {     left: 61px;      }
+}
+@keyframes animateimgtbhorizontal
+{
+    0%      {     left:61px;    }
+    16.722% {     left:661px;   }
+    20.119% {     left: 661px;  }
+    32.853% {     left:61px;    }
+    34.89%  {     left:61px;    }
+    49.575% {     left:661px;   }
+    51.699% {     left: 661px;  }
+    66.979% {     left:61px;    }
+    68.421% {     left: 61px;   }
+    81.837% {     left: 661px;  }
+    85.147% {     left: 661px;  }
+    96.435% {     left: 61px;   }
+    100%    {     left:61px;    }
+}
+@keyframes animateimginfill
+{
+    0%      {     left: 65.5px;    }
+    100%    {     left: 656.5px;   }
+}
+@keyframes animateimghorizontal
+{
+    0%       {     left:61px;    }
+    24.44%   {     left:661px;   }
+    29.405%  {     left: 661px;  }
+    48.016%  {     left:61px;    }
+    50.994%  {     left:61px;    }
+    72.456%  {     left:661px;   }
+    75.56%   {     left: 661px;  }
+    97.893%  {     left:61px;    }
+    100%     {     left: 61px;   }
+}
+
+@keyframes animateimgtb2
+{
+    0%      {     left:61px;    }
+    3.63%   {     left:661px;   }
+    4.35%   {     left: 661px;  }
+    7.48%   {     left:61px;    }
+    7.93%   {     left:61px;    }
+    11.1%   {     left:661px;   }
+    11.6%   {     left: 661px;  }
+    15%     {     left:61px;    }
+    15.45%  {     left: 61px;   }
+    18.75%  {     left: 661px;  }
+    19.23%  {     left: 661px;  }
+    22.45%  {     left: 61px;   }
+    22.95%  {     left:61px;    }
+    99%     {     left: 661px;  }
+    100%    {     left: 61px;   }
+}
+@keyframes animateimg2
+{
+    0%      {     left:61px;    }
+    3.63%   {     left:661px;   }
+    4.35%   {     left: 661px;  }
+    7.48%   {     left:61px;    }
+    7.93%   {     left:61px;    }
+    11.1%   {     left:661px;   }
+    11.6%   {     left: 661px;  }
+    15%     {     left:61px;    }
+    15.45%  {     left: 61px;   }
+    99%     {     left: 661px;  }
+    100%    {     left: 61px;   }
+}
+
+@-webkit-keyframes needle-move 
+{
+    0% {-webkit-transform: rotate(0deg);}    
+    100% {-webkit-transform: rotate(360deg);}
+}
+        
+@keyframes needle-move 
+{
+    0%   {transform: rotate(0deg);}
+    100% {transform: rotate(360deg);}
+}
+
+@keyframes spec-move 
+{
+    0%   { left: 520px; }
+    100% { left: 100px;
+           transform: scaleX(0.7); }
+}
+
+/*-----------------------------------------blink----------------------- */

@@ -1,0 +1,9 @@
+1. J. Fernandes, A. M. Deus, L. Reis, M. F. Vaz, and M. Leite, “Study of the influence of 3D printing parameters on the mechanical properties of PLA,” Proc. Int. Conf. Prog. Addit. Manuf., vol. 2018-May, no. May, pp. 547–552, 2018.<br>
+2. D. Popescu, A. Zapciu, C. Amza, F. Baciu, and R. Marinescu, “FDM process parameters influence over the mechanical properties of polymer specimens: A review,” Polym. Test., vol. 69, pp. 157–166, 2018.<br>
+3.	I. J. Solomon, P. Sevvel, and J. Gunasekaran, “A review on the various processing parameters in FDM,” Mater. Today Proc., no. xxxx, pp. 10–15, 2020..<br>
+4.	M. Kamaal, M. Anas, H. Rastogi, N. Bhardwaj, and A. Rahaman, “Effect of FDM process parameters on mechanical properties of 3D-printed carbon fibre–PLA composite,” Prog. Addit. Manuf., no. 0123456789, pp. 1–7, 2020.<br>
+5.	J. M. Chacón, M. A. Caminero, E. García-Plaza, and P. J. Núñez, “Additive manufacturing of PLA structures using fused deposition modelling: Effect of process parameters on mechanical properties and their optimal selection,” Mater. Des., vol. 124, pp. 143–157, 2017.<br>
+6.	M. Samykano, S. K. Selvamani, K. Kadirgama, W. K. Ngui, G. Kanagaraj, and K. Sudhakar, “Mechanical property of FDM printed ABS: influence of printing parameters,” Int. J. Adv. Manuf. Technol., vol. 102, no. 9–12, pp. 2779–2796, 2019.<br>
+7.	A. Rodríguez-Panes, J. Claver, and A. M. Camacho, “The influence of manufacturing parameters on the mechanical behaviour of PLA and ABS pieces manufactured by FDM: A comparative analysis,” Materials (Basel)., vol. 11, no. 8, 2018.<br>
+8. K. G. J. Christiyan, U. Chandrasekhar, and K. Venkateswarlu, “A study on the influence of process parameters on the Mechanical Properties of 3D printed ABS composite,” IOP Conf. Ser. Mater. Sci. Eng., vol. 114, no. 1, 2016.<br><br>
+

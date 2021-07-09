@@ -1,0 +1,69 @@
+{
+
+   "details": [
+       {
+			"Experiment": "Effect of different process parameters of laser cutting on the surface roughness of stainless steel.",
+			"Lab": "Additive Manufacturing Lab",
+			"Discipline": "Mechanical Engineering",
+			"Technology": "HTML, Javascript, CSS, JQuery, Inkscape"
+       }
+   ],
+
+   "developer": [
+       {
+      "Developer": "Dr. Pruthviraj U",
+      "Institute": "National Institute of Technology Karnataka, Surathkal",
+      "InstituteAcronym": "NITK, Surathkal"
+       }
+   ],
+
+   "contributer": [
+	{
+		"Contributer": "Nirmal Madhusoodanan",
+		"Institute": "National Institute of Technology Karnataka, Surathkal",
+		"InstituteAcronym": "NITK, Surathkal"
+	},
+       {
+			"Contributer": "Anusha B Salian",
+      "Institute": "National Institute of Technology Karnataka, Surathkal",
+			"InstituteAcronym": "NITK, Surathkal"
+       },
+
+			 {
+			 "Contributer": "Akshaya",
+			 "Institute": "National Institute of Technology Karnataka, Surathkal",
+			 "InstituteAcronym": "NITK, Surathkal"
+			 },
+
+       {
+			"Contributer": "Swathi Shetty",
+			"Institute": "National Institute of Technology Karnataka, Surathkal",
+			"InstituteAcronym": "NITK, Surathkal"
+       },
+
+       {
+			"Contributer": "Aishwarya Shetty",
+			"Institute": "National Institute of Technology Karnataka, Surathkal",
+			"InstituteAcronym": "NITK, Surathkal"
+       },
+
+       {
+			"Contributer": "Aishwarya Hegde",
+			"Institute": "National Institute of Technology Karnataka, Surathkal",
+			"InstituteAcronym": "NITK, Surathkal"
+       },
+
+       {
+			"Contributer": "Shanshank K Pal",
+			"Institute": "National Institute of Technology Karnataka, Surathkal",
+			"InstituteAcronym": "NITK, Surathkal"
+       },
+
+			 {
+		 	 "Contributer": "Sushamitha Wadde",
+		 	 "Institute": "National Institute of Technology Karnataka, Surathkal",
+		 	 "InstituteAcronym": "NITK, Surathkal"
+			 }
+   ]
+
+}

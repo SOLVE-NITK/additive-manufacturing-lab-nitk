@@ -1,0 +1,298 @@
+html
+{
+    -moz-user-select     : none;
+    -khtml-user-select   : none;
+    -webkit-user-select  : none;
+    -o-user-select       : none;
+    user-select          : none;
+}
+#simscreen
+{
+position: relative;
+left:0px;
+top:0px;
+height: 600px; 
+width:800px;
+border:solid 1px;
+}
+
+#copyright{
+position: absolute;
+left:50px;
+top: 580px;
+font-family: verdana; 
+font-size:12px
+}
+
+#title{
+position:relative;
+left: 0px;
+top: 0px;
+height:40px;
+font-size: 24px;
+text-align:center;
+background-color: black;
+font-family: verdana;
+color: White;
+text-transform: uppercase; 
+}
+
+#title h3{
+padding-top:2px;
+margin:0px;}
+
+#question-div{
+	position: absolute;
+	left:300px;
+	top:350px;
+	width:300px;
+	height:120px;
+	border:solid 1px gray;
+	background-color: gray;
+	filter: alpha(opacity=55);
+	color:white;
+	visibility:hidden;
+}
+
+.simsubscreen
+{
+position:absolute;
+left: 50px;
+top: 50px;
+height:530px;
+width:745px;
+}
+
+.incanvas
+{
+margin:5px 0 0 5px;
+padding:0;
+}
+#nextButton{
+    position: absolute;
+    left: 750px;
+    top: 530px;
+cursor:pointer;
+}
+#nextButton1{
+    position: absolute;
+    left: 750px;
+    top: 530px;
+cursor:pointer;
+}
+
+#prevButton{
+    position: absolute;
+    left: 0px;
+    top: 532px;
+cursor:pointer;
+}
+
+
+.steptext{
+display:inline;}
+
+.steptext-6{
+display:inline;}
+
+.steptext-2{display:inline;}
+
+.circlebg
+{
+border-radius:100%;
+font-size:25px;
+color:#fff;
+text-align:center;
+background:#000
+}
+.step{
+    position: relative;
+    top:-40px;
+    left:-50px; 
+    width: 800px; 
+    height: 560px; 
+}
+
+svg
+{
+    width: 675px;
+    height: 525px;   
+    position: absolute;
+    transform: translate(62.5px,17.5px);
+    
+}
+
+.draw
+{
+    stroke: black;
+    
+    fill: grey;
+
+}
+.drawrepeat
+{
+    stroke: black;
+
+}
+
+  @keyframes display_down {
+    0%   {left: 330px; top: 185px;}
+    100% {left: 330px; top: 285px;}
+  
+  }
+  
+
+  @keyframes probe_down {
+    0%   {left: 205px; top: 225px;}
+    100% {left: 205px; top: 325px;}
+  }
+
+  
+  @keyframes  probe_right {
+    0%   {left: 205px; top: 325px;}
+    100% {left: 305px; top: 325px;}
+  }
+
+
+@keyframes animate
+{
+   from
+   {
+       stroke-linecap: round;
+   }    
+    to
+    {
+        stroke-linecap: round;
+        stroke-dashoffset: 0;
+
+    }
+}
+@keyframes animate1
+{
+    0%{
+        stroke: #000;
+        fill: transparent;
+
+    }
+    99%{ stroke: #000;
+        fill: transparent;
+        opacity: 100%;
+        stroke-dashoffset: 0;}
+    100%
+    {
+        stroke: #000;
+        fill: transparent;
+        opacity: 10%;
+        stroke-dashoffset: 0;
+
+    }
+}
+@keyframes animatelast
+{
+    0%{
+        stroke: #000;
+        fill: transparent;
+
+    }
+   
+    100%
+    {
+        stroke: #000;
+        fill: transparent;
+        stroke-dashoffset: 0;
+
+    }
+}
+@keyframes animateimgtb
+{
+    0%      { left:80px;  }
+    3.63%   { left:680px; }
+    4.35%   { left:680px; }
+    7.48%   { left:80px;  }
+    7.93%   { left:80px;  }
+    11.1%   { left:680px; }
+    11.6%   { left:680px; }
+    15%     { left:80px;  }
+    15.45%  { left:80px;  }
+    18.75%  { left:680px; }
+    19.23%  { left:680px; }
+    22.45%  { left:80px;  }
+    22.95%  { left:80px;  }
+    99%     { left:680px; }
+    100%    { left:80px;  }
+}
+@keyframes animateimg1
+{
+    0%      { left:80px;  }
+    9.08%   { left:680px; }
+    11.5%   { left:680px; }
+    20.2%   { left:80px;  }
+    21.8%   { left:80px;  }
+    30.6%   { left:680px; }
+    32.1%   { left:680px; }
+    41.8%   { left:80px;  }
+    43.4%   { left:80px;  }
+    99%     { left:680px; }
+    100%    { left:80px;  }
+}
+@keyframes animateimg2
+{
+    0%      { left:80px;  }
+    6.96%   { left:680px; }
+    8.81%   { left:680px; }
+    15.48%   { left:80px;  }
+    16.7%   { left:80px;  }
+    23.45%   { left:680px; }
+    24.6%   { left:680px; }
+    32.03%   { left:80px;  }
+    33.25%   { left:80px;  }
+    99%     { left:680px; }
+    100%    { left:80px;  }
+}
+@keyframes animateimg3
+{
+    0%      { left:80px;  }
+    5.73%   { left:680px; }
+    7.26%   { left:680px; }
+    12.75%   { left:80px;  }
+    13.76%   { left:80px;  }
+    19.32%   { left:680px; }
+    20.27%   { left:680px; }
+    26.39%   { left:80px;  }
+    27.4%   { left:80px;  }
+    99%     { left:680px; }
+    100%    { left:80px;  }
+}
+@keyframes animateimg4
+{
+    0%      { left:80px;  }
+    4.38%   { left:680px; }
+    5.55%   { left:680px; }
+    9.75%   { left:80px;  }
+    10.52%   { left:80px;  }
+    14.77%   { left:680px; }
+    15.5%   { left:680px; }
+    20.18%   { left:80px;  }
+    20.95%   { left:80px;  }
+    99%     { left:680px; }
+    100%    { left:80px;  }
+}
+@keyframes animateimg5
+{
+    0%      { left:80px;  }
+    3.45%   { left:680px; }
+    4.37%   { left:680px; }
+    7.68%   { left:80px;  }
+    8.29%   { left:80px;  }
+    11.64%   { left:680px; }
+    12.21%   { left:680px; }
+    15.9%   { left:80px;  }
+    16.51%   { left:80px;  }
+    99%     { left:680px; }
+    100%    { left:80px;  }
+}
+
+
+
+/*-----------------------------------------blink----------------------- */
+

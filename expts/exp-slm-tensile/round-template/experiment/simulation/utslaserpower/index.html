@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+
+<title>SOLVE</title>
+<link rel="stylesheet" href="css/tslp.css" />
+<link rel="stylesheet" href="css/mathstyle.css" />
+<script type="text/javascript" src= "js/jquerymin.js"></script>
+<script type="text/javascript" src= "js/tslp.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+
+<script>
+var simsubscreennum=0;
+var temp=0;
+var lnt=0;
+var n;
+</script>
+<style>
+.popup
+{
+	border-radius:5px;
+	background-color:white;
+	color:black;
+	padding:5px;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 500px;
+  background-color: black;
+  color: #fff;
+  border-radius: 6px;
+  padding: 10px 10px 10px 10px;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 100;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+ 
+</style>
+
+</head>
+
+<body style="margin:0; font-family:verdana; font-size:14px;">
+<!--Simulation Screen start		-->
+<div id="simscreen">
+
+<!--Title of Simulation		-->
+<div id="title"><h3 style="font-size:25px;">Effect of laser power on tensile strength</h3></div>
+
+<!--SubScreen Home	-->	
+<div class="simsubscreen" id="canvas0">
+<h4 class="incanvas" style="font-family:verdana; ">Objective:</h4>
+<p class="incanvas" style="font-family:verdana; font-size:15px;">To determine the effect of laser power on ultimate tensile strength.</p></br>
+<h4 class="incanvas" style="font-family:verdana; ">Apparatus used:</h4>
+<p class="incanvas" style="font-family:verdana; font-size:14px;">3D printer, universal testing machine etc.</p>
+&nbsp;<span class="tooltip" style="border-bottom:1px dotted ; color:red; position:absolute; top:130px;"><strong>Description</strong>
+<span  class="tooltiptext" style="text-align:justify;"><strong style="color:red;">Ultimate tensile strength</strong> is the maximum stress that a material can withstand while being stretched or pulled before breaking. <br><br><strong style="color:red;">Laser power</strong> is the power of the laser beam that is directed at the powdered metal to melt it.</span></span>
+<img id=""      style="position: absolute; left: 120px; top: 125px; width:300px; height: 380px;" title="Izod test apparatus" src = "Images/mn0.png"/>
+<img id="" style="position: absolute; left:340px; top: 290px; height: 14px;" src="images/mndl.png"/>
+<img id="" style="position: absolute; left: 440px; top: 200px; height:280px;width:285px;" title="SLM 3D printer" src="Images/slmmachine.png"/>
+<img style="position:absolute; left:10px; top:190px; height: 300px;" title="Human" src="Images/human.png" />
+
+</div>
+
+<!--Step1	-->	
+<div class="simsubscreen" id="canvas1" style="visibility:hidden">
+<strong id="titlestep" class="incanvas">STEP </strong>
+<span class="circlebg" id="stepnumber">&nbsp;1&nbsp;</span>
+<p id="pumptext" class="steptext" style="font-family:verdana; font-size:14px;">Note the laser power value</p>
+
+
+<p id="can6-2" style="position:absolute;top: 100px; left:60px; font-family:verdana; font-size:14px;">Laser power = _____ W</p>
+<p id="power" style="position:absolute; visibility: hidden; top: 140px; left:60px; font-family:verdana; font-size:14px;"></p>
+<p id="can6-3" style="position:absolute;top: 140px; left:60px; font-family:verdana; font-size:14px;">Layer height =  _____ mm</p>
+<p id="can6-4" style="position:absolute;top: 180px; left:60px; font-family:verdana; font-size:14px;">Scanning speed = _____mm/s</p>
+<p id="can6-5" style="position:absolute;top: 220px; left:60px; font-family:verdana; font-size:14px;">Build orientation = _____°</p>
+<img id="specimennotch1" style="position:absolute; left: 120px; top: 300px; width: 400px; height: 200px; visibility:hidden;" src="images/fdmtensilepart.PNG"/>   
+</div>
+
+<!--Step2	-->	
+
+<div class="simsubscreen" id="canvas2" style="visibility:hidden">
+  <strong id="titlestep" class="incanvas">STEP </strong>
+  <span class="circlebg" id="stepnumber">&nbsp;2&nbsp;</span>
+  <p id="pumptext" class="steptext" style="font-family:verdana; font-size:14px;">Print the specimen</p>
+  <div id = "step-2" class = "step" style="font-family:verdana; font-size:14px;">
+  <p id="note" style="position:absolute; visibility: hidden; top: -15px; left:60px; font-family:verdana; font-size:14px; z-index: 100;"></p>
+  <svg id = "specimen" class = "svg" width="571" height="375" version="1.1" viewBox="0 0 571 375" xmlns="http://www.w3.org/2000/svg">
+    <g fill="transparent" >
+      <defs>
+        <radialGradient id="myGradient">
+          <stop offset="0%" stop-color="grey" />
+          <stop offset="100%" stop-color="black" />
+        </radialGradient>
+      </defs>
+      <path id = 'base0' d="m15 272.5"></path> 
+      <path id = "base" d="m 10,240 h 24 v 90 h 420 v -90 h 8 v 110 h 82.5 v -110 h 17.5 v 120 h-552 v-120" class="drawmainbase" style="visibility: hidden; z-index: 10; fill: white;" ></path> 
+      <path id = "baseroller" ></path> 
+      <path id = "layer0"  d="m25 272.5" style="stroke-linecap:round;"></path>
+      <path d="M25.75 111.75 h398.5 v-48.5 h-398.5 v48.5 l1.5 -1.5 h395.5 v-45.5 h-395.5 v45.5 " ></path>
+      <path d="M25.75 111.75 h398.5 v-48.5 h-398.5 v48.5 l1.5 -1.5 h395.5 v-45.5 h-395.5 v45.5 v-45.5" ></path>
+    </g>
+  </svg>
+  <div id='image'>
+  <img id = "img0"    style="position: absolute; left:33px; top: 250px; height:43.4375px; width:40px; cursor:move;" title= "Laserhead" src="Images/extruder.png" onclick="print();"/>
+  <img id = "laser"   style="position: absolute; left:33px; top: 250px; height:104.25px; width:40px; cursor:move; visibility:hidden;" title= "Laser" src="Images/laser.png"/>
+  <img id = "laser1"  style="position: absolute; left:33px; top: 250px; height:104.25px; width:40px; cursor:move; visibility:hidden;" title= "Laser" src="Images/laser1.png"/>
+  <img id = "laser2"  style="position: absolute; left:33px; top: 250px; height:104.25px; width:40px; cursor:move; visibility:hidden;" title= "Laser" src="Images/laser2.png"/>
+  <img id = "laser3"  style="position: absolute; left:33px; top: 250px; height:104.25px; width:40px; cursor:move; visibility:hidden;" title= "Laser" src="Images/laser3.png"/>
+  <img id = "roller"  style="position: absolute; left:761px; top: 329px; height: 25px; width:25px; visibility:hidden; z-index: 2;" title= "Roller" src="Images/roller.png"/>
+  <img id = "material" style="position: absolute; right:30px; top: 340.25px; height:14px; width:123.25px; animation:none; visibility:hidden; z-index: 1; " title= "Material" src="Images/material.png"/>
+  </div>
+</div>
+
+</div>
+
+<!--Step3	-->	
+<div class="simsubscreen" id="canvas3" style="visibility:hidden">
+  <strong class="incanvas">STEP &nbsp;</strong><span class="circlebg">&nbsp;3&nbsp;</span>
+  <p class="steptext" style="font-family:verdana; font-size:14px;">&nbsp;The specimen is inserted in the universal testing machine and pulling load is applied. Load at failure is noted.</p>
+  <img id="can61" style="position: absolute; left:0px; top: 50px;" src="images/mn0.png"/>
+  <img id="can61a" style="position: absolute; left:0px; top: 50px;visibility:hidden;" src="images/mn1.png"/>
+  <img id="can61b" style="position: absolute; left:0px; top: 50px;visibility:hidden;" src="images/mn2.png"/>
+  <img id="can61c" style="position: absolute; left:0px; top: 50px;visibility:hidden;" src="images/mn3.png"/>
+  <img id="can61d" style="position: absolute; left:0px; top: 50px;visibility:hidden;" src="images/mn4.png"/>
+  <img id="can62" style="position: absolute; left:238px; top: 264px;" src="images/mndl.png"/> 
+  <img id="can63a" style="position: absolute; left:245px; top: 50px;visibility:hidden;" src="images/ez3.png"/> 
+  <img id="can63b" style="position: absolute; left:245px; top: 50px;visibility:hidden;" src="images/ez4.png"/> 
+  <img id="can63c" style="position: absolute; left:245px; top: 50px;visibility:hidden;" src="images/ez5.png"/> 
+  <img id="can63d" style="position: absolute; left:245px; top: 50px;visibility:hidden;" src="images/ez6.png"/>
+  <img id="can65" style="position: absolute; left:240px; top: 50px; visibility: hidden;" src="images/czoom1.png"/> 	
+  <img id="red" style="position: absolute; left:242.1px; top:324.8px;cursor:pointer" src="images/red.png"/>
+  <img id="green" style="position: absolute; left:249.1px; top:333.2px;cursor:pointer" src="images/green.png"/>
+  <img id="spec" style="position: absolute; height: 130px; width: auto; left:520px; top: 180px; cursor: pointer;" src="images/specimen.png"/>
+  <p id="sr1" style=" position:absolute; visibility: hidden; top: 230px; left:388px;font-family:verdana; font-size:14px;">Load at failure of specimen = _____N</p>
+  </div>
+
+<!--Step4	-->	
+<div class="simsubscreen" id="canvas4" style="visibility:hidden">
+  <h2 id="step4-1" style="font-family:verdana; position: absolute; left:-20px; ">Calculations:</h2>
+  <p id="41" style="position: absolute; left:50px; top:100px;font-family:verdana; font-size:14px; visibility:hidden;">Total Loss of energy E<sub>t</sub> during transit of hammer =______J</p>
+  <p id="42" style="position: absolute; left:50px; top:150px;font-family:verdana; font-size:14px; visibility:hidden;">Original cross-section area of specimen, A<sub>o</sub> = 13*4 = 52 mm<sup>2</sup></p>  <div id="4-11" style="position:absolute; left:50px; top:210px; font-size:16px; font-family:verdana; font-size:14px;">
+    <label for="output" style="font-family:verdana; font-size:14px;" >Ultimate tensile Strength of specimen =</label> <input id="output" type="text" style="border:none; border-bottom: 1px solid; width:55px;" required >&nbsp;&nbsp;<label for="output" style="font-family:verdana; font-size:14px;">MPa</label>
+    <input id="form" type="button" name="Formula" value="Formula"/>&nbsp;&nbsp;
+    <input id="check" type="button" name="check" value="Check"/>
+    <input id="result" type="button" name="Result" value="Result" style="visibility:hidden;"/><p id="rw" style="color:#32CD32; font-size:22px; position:absolute; left:410px; top:-190px; visibility:hidden;">&#10004;</p></br>
+  </br>
+    
+    <span id="formula" style="font-family:verdana; font-style:normal; border:1px solid black; padding:15px; visibility:hidden;">Ultimate Tensile Strength of specimen (in MPa)= <span class="frac"><sup>Load at failure of specimen</sup><span>&frasl;</span><sub>A<sub>o</sub></sub></span></span>
+  </div>
+  <img id="specimennotch2" style="position:absolute; left: 120px; top: 300px; width: 400px; height: 200px; visibility:hidden;" src="images/fdmtensilepart.PNG"/>      
+</div>
+
+
+<!--Step5	-->	
+<div class="simsubscreen" id="canvas5" style="visibility:hidden">
+  <strong class="incanvas" id="ob"><h3>Observations: </h3></strong>
+  <table id="table" border=1 style="text-align:center; width:600px;">
+  <tr>
+  <td style="padding:10px;">Trial</td>
+  <td style="padding:10px;">Laser power(W)</td>
+  <td style="padding:10px;">Ultimate tensile strength(MPa)</td>
+  </tr>
+  <tr>
+  <td style="padding:10px;">1</td>
+  <td id="1-1" style="padding:10px;"></td>
+  <td id="1-2" style="padding:10px;"></td>
+  </tr>
+  <tr>
+  <td style="padding:10px;">2</td>
+  <td id="2-1" style="padding:10px;"></td>
+  <td id="2-2" style="padding:10px;"></td>
+  </tr>
+  <tr>
+  <td style="padding:10px;">3</td>
+  <td id="3-1" style="padding:10px;"></td>
+  <td id="3-2" style="padding:10px;"></td>
+  </tr>
+  <tr>
+  <td style="padding:10px;">4</td>
+  <td id="4-1" style="padding:10px;"></td>
+  <td id="4-2" style="padding:10px;"></td>
+  </tr>
+  </table>
+ 
+  <div id="inferenceDiv" style="visibility:hidden; position:absolute; left:10px; top:290px;">
+  <strong class="incanvas" id="ob" ><h3>Inference: </h3></strong>
+  <div id="inference" style="background-color:grey; color:white; padding:7.5px; border-radius:5px;">
+  <p>How does the ultimate tensile strength change with increase in laser power?</p>
+  <input type="radio" name="inf" value="1">&nbsp;Increases</br>
+  <input type="radio" name="inf" value="2">&nbsp;Decreases</br>
+  <input type="radio" name="inf" value="3">&nbsp;Stays the same</br></br>
+  <input type="button" value="Submit" onclick="checkInference();"/><span  id="ans" style="visibility:hidden;"></span>
+  <!--<p id="ans" style="visibility:hidden;"></p>-->
+  </div>
+  </div>
+  <p id="infAns" style="display:none; font-weight:bold; position:absolute; left:10px; top:350px; text-align:justify; width:700px;"></p>
+  </div>
+
+<div id="notes" style="position:absolute; background-color:grey; color:white; padding:7.5px; border-radius:5px; visibility:hidden; text-align:justify;"></div>
+
+<div id="questDiv" style="position:absolute; background-color:grey; color:white; padding:7.5px; border-radius:5px; visibility:hidden; text-align:justify;">
+<p id="q"></p><select id="answer" >	
+</select>
+<p id="a"></p>
+</div>
+
+
+<!--Trial text	-->
+<div id="">	
+<p id="trial" style="text-transform: uppercase;visibility :hidden;font-weight: bold;font-family:verdana; "><strong>Trial = </strong></p>
+</div>
+
+	
+<!--next  Arrow	-->	
+<div id="nav">
+	<img id="nextButton" style="z-index: 10;" onclick="navNext(); " src="Images/Next.png" />
+</div>
+
+<!--Blinking Arrow	-->	
+<img class ="" id="arrow1" style="visibility:hidden" src="Images/arrow1.png"/>
+
+<div id="copyright"> &copy; 2020 SOLVE - The Virtual Lab @ NITK Surathkal, Department of Mechanical Engineering</div>
+</body>
+<script type="text/javascript" src= "js/tslpsvg.js"></script>
+</html>

@@ -1,0 +1,70 @@
+{
+
+   "details": [
+       {
+			"Experiment": "Effect of SLM process parameters on ultimate tensile strength of 3D printed specimens made of stainless steel.",
+			"Lab": "Additive Manufacturing Lab",
+			"Discipline": "Mechanical Engineering",
+			"Technology": "HTML, Javascript, CSS, JQuery, Inkscape"
+       }
+   ],
+
+   "developer": [
+       {
+      "Developer": "Dr. Pruthviraj U",
+      "Institute": "National Institute of Technology Karnataka, Surathkal",
+      "InstituteAcronym": "NITK, Surathkal"
+       }
+   ],
+
+   "contributer": [
+		
+		{
+			"Contributer": "Nirmal Madhusoodanan",
+			"Institute": "National Institute of Technology Karnataka, Surathkal",
+			"InstituteAcronym": "NITK, Surathkal"
+		},
+       {
+			"Contributer": "Anusha B Salian",
+      		"Institute": "National Institute of Technology Karnataka, Surathkal",
+			"InstituteAcronym": "NITK, Surathkal"
+       },
+
+			 {
+			 "Contributer": "Akshaya",
+			 "Institute": "National Institute of Technology Karnataka, Surathkal",
+			 "InstituteAcronym": "NITK, Surathkal"
+			 },
+
+       {
+			"Contributer": "Swathi Shetty",
+			"Institute": "National Institute of Technology Karnataka, Surathkal",
+			"InstituteAcronym": "NITK, Surathkal"
+       },
+
+       {
+			"Contributer": "Aishwarya Shetty",
+			"Institute": "National Institute of Technology Karnataka, Surathkal",
+			"InstituteAcronym": "NITK, Surathkal"
+       },
+
+       {
+			"Contributer": "Aishwarya Hegde",
+			"Institute": "National Institute of Technology Karnataka, Surathkal",
+			"InstituteAcronym": "NITK, Surathkal"
+       },
+
+       {
+			"Contributer": "Shanshank K Pal",
+			"Institute": "National Institute of Technology Karnataka, Surathkal",
+			"InstituteAcronym": "NITK, Surathkal"
+       },
+
+			 {
+		 	 "Contributer": "Sushamitha Wadde",
+		 	 "Institute": "National Institute of Technology Karnataka, Surathkal",
+		 	 "InstituteAcronym": "NITK, Surathkal"
+			 }
+   ]
+
+}

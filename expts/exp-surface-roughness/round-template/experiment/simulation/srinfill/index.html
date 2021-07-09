@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+
+<title>SOLVE</title>
+<link rel="stylesheet" href="css/srid.css" />
+<link rel="stylesheet" href="css/mathstyle.css" />
+<script type="text/javascript" src= "js/jquerymin.js"></script>
+<script type="text/javascript" src= "js/srid.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+
+<script>
+var simsubscreennum=0;
+var temp=0;
+var lnt=0;
+var n;
+</script>
+<style>
+.popup
+{
+	border-radius:5px;
+	background-color:white;
+	color:black;
+	padding:5px;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 500px;
+  background-color: black;
+  color: #fff;
+  border-radius: 6px;
+  padding: 10px 10px 10px 10px;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 100;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+
+</style>
+
+</head>
+
+<body style="margin:0; font-family:verdana; font-size:14px;">
+<!--Simulation Screen start		-->
+<div id="simscreen">
+
+<!--Title of Simulation		-->
+<div id="title"><h3 style="font-size:25px;">Effect of infill density on surface roughness</h3></div>
+
+<!--SubScreen Home	-->
+<div class="simsubscreen" id="canvas0">
+<h4 class="incanvas" style="font-family:verdana; ">Objective:</h4>
+<p class="incanvas" style="font-family:verdana; font-size:15px;">To determine the effect of infill density on surface roughness.</p></br>
+<h4 class="incanvas" style="font-family:verdana; ">Apparatus used:</h4>
+<p class="incanvas" style="font-family:verdana; font-size:14px;">3D printer, Surface roughness tester etc.</p>
+&nbsp;<span class="tooltip" style="border-bottom:1px dotted ; color:red; position:absolute; top:130px;"><strong>Description</strong>
+<span  class="tooltiptext" style="text-align:justify;"><strong style="color:red;">Surface roughness</strong> is measured as R<sub>a</sub> or average surface roughness. The R<sub>a</sub> value indicates the average surface roughness for the length of the measurement performed, i.e.,
+                                                                             the average difference between peaks and valleys.<br><br><strong style="color:red;">Infill Density</strong> is the amount of material filled inside the shells of the specimen. It is denoted in percentage value.</span></span>
+<img id=""      style="position: absolute; left: 450px; top: 340px; height:100px;width:150px;" title="Roughness tester" src="Images/base.png"/>
+<img id=""  style="position: absolute; left: 477.08px; top: 385px; height:16.67px;width:52.10px;" title="Roughness tester" src="Images/probe.png"/>
+<img id="" style="position: absolute; left: 529.18px; top: 365px; width:71.42px; height:33.35px;" title="Roughness tester" src="Images/display.png"/>
+<img id="" style="position: absolute; left: 250px; top: 280px; height:175px;width:140px;" title="3D printer" src="Images/3dprinter.jpg"/>
+<img style="position:absolute; left:50px; top:160px; height:345px" title="Human" src="Images/human.png" />
+
+</div>
+
+<!--Step1	-->
+<div class="simsubscreen" id="canvas1" style="visibility:hidden">
+<strong id="titlestep" class="incanvas">STEP </strong>
+<span class="circlebg" id="stepnumber">&nbsp;1&nbsp;</span>
+<p id="pumptext" class="steptext" style="font-family:verdana; font-size:14px;">Select material and note the infill density value</p>
+<div id = "step-1" style="position:absolute;top:100px; left:60px; font-family:verdana; font-size:14px;">
+<p id="select">Select a material:
+  <input type="radio" name="d"  value="1">&nbsp;PLA
+  <input type="radio" name="d"  value="0">&nbsp;ABS
+  <input id="done" type="submit" name="done" value="Done!"  /> </p>&nbsp;&nbsp;<br></div>
+<p id="can6-1" style="position:absolute;top: 100px; left:60px; font-family:verdana; font-size:14px; visibility: hidden;">Material = _____ </p>
+<p id="can6-2" style="position:absolute;top: 140px; left:60px; font-family:verdana; font-size:14px;">Infill density = _____ %</p>
+<p id="infill" style="position:absolute; visibility: hidden; top: 140px; left:60px; font-family:verdana; font-size:14px;"></p>
+<p id="can6-3" style="position:absolute;top: 180px; left:60px; font-family:verdana; font-size:14px;">Layer height =  _____ mm</p>
+<p id="can6-4" style="position:absolute;top: 220px; left:60px; font-family:verdana; font-size:14px;">Printing speed = _____ mm/s</p>
+</div>
+
+<!--Step2	-->
+
+<div class="simsubscreen" id="canvas2" style="visibility:hidden">
+  <strong id="titlestep" class="incanvas">STEP </strong>
+  <span class="circlebg" id="stepnumber">&nbsp;2&nbsp;</span>
+  <p id="pumptext" class="steptext" style="font-family:verdana; font-size:14px;">Print the specimen</p>
+  <div id = "step-2" class = "step" style="font-family:verdana; font-size:14px;">
+  <p id="note" style="position:absolute; visibility: hidden; top: -15px; left:60px; font-family:verdana; font-size:14px; z-index: 100;"></p>
+    <svg id = "specimen" class = "svg" width="450" height="350" version="1.1" viewBox="0 0 450 350" xmlns="http://www.w3.org/2000/svg">
+    <g fill="transparent" >
+        <defs>
+            <radialGradient id="myGradient">
+              <stop offset="0%" stop-color="grey" />
+              <stop offset="100%" stop-color="black" />
+            </radialGradient>
+          </defs>
+        <path id = 'base' d="m15 272.5"></path>
+        <path id = "layer0"  d="m25 272.5" style="stroke-linecap:round;"></path>
+        <path id ="drawlayer1"  d="M25.75 111.75 h398.5 v-48.5 h-398.5 v48.5 l1.5 -1.5 h395.5 v-45.5 h-395.5 v45.5 l1.5 -1.5 h392.5 v-42.5 h-392.5 v42.5" ></path>
+        <path id ="drawlayer2"  d="M25.75 111.75 h398.5 v-48.5 h-398.5 v48.5 l1.5 -1.5 h395.5 v-45.5 h-395.5 v45.5 l1.5 -1.5 h392.5 v-42.5 h-392.5 v42.5 v-42.5" ></path>
+        <path d="M25.75 111.75 h398.5 v-48.5 h-398.5 v48.5 l1.5 -1.5 h395.5 v-45.5 h-395.5 v45.5 " ></path>
+        <path d="M25.75 111.75 h398.5 v-48.5 h-398.5 v48.5 l1.5 -1.5 h395.5 v-45.5 h-395.5 v45.5 v-45.5" ></path>
+        <path id ="drawlayer5"  d="M25.75 111.75 h398.5 v-48.5 h-398.5 v48.5 l1.5 -1.5 h395.5 v-45.5 h-395.5 v45.5 l1.5 -1.5 h392.5 v-42.5 h-392.5 v42.5" ></path>
+        <path id ="drawlayer6"  d="M25.75 111.75 h398.5 v-48.5 h-398.5 v48.5 l1.5 -1.5 h395.5 v-45.5 h-395.5 v45.5 l1.5 -1.5 h392.5 v-42.5 h-392.5 v42.5 v-42.5" ></path>
+
+    </g>
+</svg>
+<div id='image'><img id = "img0" style="position: absolute; left: 80px; bottom: 130px; height:75px; width:50px; cursor:move;" title= "Extruder" src="Images/extruder.png" onclick="print();"/></div>
+</div>
+
+</div>
+
+<!--Step3	-->
+<div class="simsubscreen" id="canvas3" style="visibility:hidden">
+<strong class="incanvas">STEP &nbsp;</strong><span class="circlebg">&nbsp;3&nbsp;</span>
+<p class="steptext" style="font-family:verdana; font-size:14px;">&nbsp;Measure the surface roughness </p>
+
+<img id="" style="position: absolute; left: 170px; top: 200px; height:200px;width:300px;" title="Roughness tester" src="Images/base.png"/>
+<img id ="probe1" style="position: absolute; left: 205px; top: 225px; height:40px; width:125px; cursor:move;" title="Roughness tester" src="Images/probe.png">
+<img id ="probe2" style="position: absolute; left: 205px; top: 325px; height:40px; width:125px; visibility: hidden; cursor:move;" title="Roughness tester" src="Images/probe.png" onclick = "ani2()"/>
+<img id ="display" style="position: absolute; left: 330px; top: 185px; height:80px; width:150px; cursor:move;" title="Roughness tester" src="Images/display.png" onclick="ani1()"/>
+<img id="spec1" style="position: absolute; left: 120px; top: 200px; height:20px;width:100px; cursor:move;" title="Roughness tester" src="Images/specimen.png" onclick="spec()"/>
+<img id="spec2" style="visibility:hidden;" title="Roughness tester" src="Images/specimen.png"/>
+
+<p id="sr1" style=" position:absolute;visibility: hidden; top: 450px; left:28px;font-family:verdana; font-size:14px;">Surface Roughness of specimen = _____ &#181m</p>
+<p id="sr2" style=" position:absolute;visibility: hidden; top: 450px; left:28px;font-family:verdana; font-size:14px;"></p>
+<p id="dispres" style="position:absolute;left:370px;visibility: hidden; top:290px; font-family:verdana; font-size:14px;"> </p>
+</div>
+
+<!--Step4	-->
+<div class="simsubscreen" id="canvas4" style="visibility:hidden">
+  <strong class="incanvas" id="ob"><h3>Observations: </h3></strong>
+  <table id="table" border=1 style="text-align:center; width:600px;">
+  <tr>
+  <td style="padding:10px;">Trial</td>
+  <td style="padding:10px;">Infill Density(%)</td>
+  <td style="padding:10px;">Surface Roughness(&#181m)</td>
+  </tr>
+  <tr>
+  <td style="padding:10px;">1</td>
+  <td id="1-1" style="padding:10px;"></td>
+  <td id="1-2" style="padding:10px;"></td>
+  </tr>
+  <tr>
+  <td style="padding:10px;">2</td>
+  <td id="2-1" style="padding:10px;"></td>
+  <td id="2-2" style="padding:10px;"></td>
+  </tr>
+  <tr>
+  <td style="padding:10px;">3</td>
+  <td id="3-1" style="padding:10px;"></td>
+  <td id="3-2" style="padding:10px;"></td>
+  </tr>
+  <tr>
+  <td style="padding:10px;">4</td>
+  <td id="4-1" style="padding:10px;"></td>
+  <td id="4-2" style="padding:10px;"></td>
+  </tr>
+  <tr>
+  <td style="padding:10px;">5</td>
+  <td id="5-1" style="padding:10px;"></td>
+  <td id="5-2" style="padding:10px;"></td>
+  </tr>
+  </table>
+
+  <div id="inferenceDiv" style="visibility:hidden; position:absolute; left:10px; top:290px;">
+  <strong class="incanvas" id="ob" ><h3>Inference: </h3></strong>
+  <div id="inference" style="background-color:grey; color:white; padding:7.5px; border-radius:5px;">
+  <p>How does the surface roughness change with increase in infill density?</p>
+  <input type="radio" name="inf" value="1">&nbsp;Increases</br>
+  <input type="radio" name="inf" value="2">&nbsp;Decreases</br>
+  <input type="radio" name="inf" value="3">&nbsp;Stays the same</br></br>
+  <input type="button" value="Submit" onclick="checkInference();"/><span  id="ans" style="visibility:hidden;"></span>
+  <!--<p id="ans" style="visibility:hidden;"></p>-->
+  </div>
+  </div>
+  <p id="infAns" style="display:none; font-weight:bold; position:absolute; left:10px; top:350px; text-align:justify; width:700px;"></p>
+  </div>
+
+<div id="notes" style="position:absolute; background-color:grey; color:white; padding:7.5px; border-radius:5px; visibility:hidden; text-align:justify;"></div>
+
+<div id="questDiv" style="position:absolute; background-color:grey; color:white; padding:7.5px; border-radius:5px; visibility:hidden; text-align:justify;">
+<p id="q"></p><select id="answer" >
+</select>
+<p id="a"></p>
+</div>
+
+
+<!--Trial text	-->
+<div id="">
+<p id="trial" style="text-transform: uppercase;visibility :hidden;font-weight: bold;font-family:verdana; "><strong>Trial = </strong></p>
+</div>
+
+
+<!--next  Arrow	-->
+<div id="nav">
+	<img id="nextButton" style="z-index: 10;" onclick="navNext(); " src="Images/Next.png" />
+</div>
+
+<!--Blinking Arrow	-->
+<img class ="" id="arrow1" style="visibility:hidden" src="Images/arrow1.png"/>
+
+<div id="copyright"> &copy; 2020 SOLVE - The Virtual Lab @ NITK Surathkal, Department of Mechanical Engineering</div>
+</body>
+<script type="text/javascript" src= "js/sridsvg.js"></script>
+</html>

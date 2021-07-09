@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+
+<title>SOLVE</title>
+<link rel="stylesheet" href="css/ptlh.css" />
+<link rel="stylesheet" href="css/mathstyle.css" />
+<script type="text/javascript" src= "js/jquerymin.js"></script>
+<script type="text/javascript" src= "js/ptlh.js"></script>
+
+<script>
+var simsubscreennum=0;
+var temp=0;
+var lnt=0;
+var n;
+</script>
+<style>
+.popup
+{
+	border-radius:5px;
+	background-color:white;
+	color:black;
+	padding:5px;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 500px;
+  background-color: black;
+  color: #fff;
+  border-radius: 6px;
+  padding: 10px 10px 10px 10px;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 100;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+ 
+</style>
+
+</head>
+
+<body style="margin:0; font-family:verdana; font-size:14px;">
+<!--Simulation Screen start		-->
+<div id="simscreen">
+
+<!--Title of Simulation		-->
+<div id="title"><h3 style="font-size:25px;">Effect of layer height on print time</h3></div>
+
+<!--SubScreen Home	-->	
+<div class="simsubscreen" id="canvas0">
+<h4 class="incanvas" style="font-family:verdana; ">Objective:</h4>
+<p class="incanvas" style="font-family:verdana; font-size:15px;">To determine the effect of layer height on print time.</p></br>
+<h4 class="incanvas" style="font-family:verdana; ">Apparatus used:</h4>
+<p class="incanvas" style="font-family:verdana; font-size:14px;">3D printer, Stopwatch etc.</p>
+&nbsp;<span class="tooltip" style="border-bottom:1px dotted ; color:red; position:absolute; top:130px;"><strong>Description</strong>
+<span  class="tooltiptext" style="text-align:justify;"><strong style="color:red;">Print time</strong> is the total time taken for the specimen to completely print.<br><br><strong style="color:red;">Layer height</strong> is the height of individual layers that make up the specimen.</span></span>
+  <img id="sw"      style="position: absolute; left: 300px; top: 300px; height:94.11px;width:80px;" title="Stopwatch" src="Images/stopwatch.png"/>
+  <p style="position:absolute;left:315px; top:325px; font-family:verdana; font-size:10px;">00:00:00</p>
+  <img id="" style="position: absolute; left: 450px; top: 300px; height:170px;width:140px;" title="3D printer" src="Images/3dprinter.jpg"/>
+  <img style="position:absolute; left:90px; top:160px;" title="Human" src="Images/human.png" />
+
+</div>
+
+<!--Step1	-->	
+<div class="simsubscreen" id="canvas1" style="visibility:hidden">
+<strong id="titlestep" class="incanvas">STEP </strong>
+<span class="circlebg" id="stepnumber">&nbsp;1&nbsp;</span>
+<p id="pumptext" class="steptext" style="font-family:verdana; font-size:14px;">Note the layer height value</p>
+<p id="can6-1" style="position:absolute;top: 100px; left:60px; font-family:verdana; font-size:14px;">Material =  PLA</p>
+<p id="can6-2" style="position:absolute;top: 140px; left:60px; font-family:verdana; font-size:14px;">Layer height =  _____ mm</p>
+<p id="lh" style="position:absolute; visibility: hidden; top: 140px; left:60px; font-family:verdana; font-size:14px;"></p>
+<p id="can6-3" style="position:absolute;top: 180px; left:60px; font-family:verdana; font-size:14px;">Infill density = _____ %</p>
+<p id="can6-4" style="position:absolute;top: 220px; left:60px; font-family:verdana; font-size:14px;">Feed rate = _____ mm/s</p>
+<p id="can6-5" style="position:absolute;top: 260px; left:60px; font-family:verdana; font-size:14px;">Build orientation =  _____°</p>
+
+</div>
+
+<!--Step2	-->	
+
+<div class="simsubscreen" id="canvas2" style="visibility:hidden">
+  <strong id="titlestep" class="incanvas">STEP </strong>
+  <span class="circlebg" id="stepnumber">&nbsp;2&nbsp;</span>
+  <p id="pumptext" class="steptext" style="font-family:verdana; font-size:14px;">Print the specimen and measure the time</p>
+  <div id = "step-2" class = "step" style="font-family:verdana; font-size:14px;">
+  <p id="note" style="position:absolute; visibility: hidden; top: -15px; left:60px; font-family:verdana; font-size:14px; z-index: 100;"></p>
+    <svg id = "specimen" class = "svg" width="450" height="350" version="1.1" viewBox="0 0 450 350" xmlns="http://www.w3.org/2000/svg">
+    <g fill="transparent" >
+        <defs>
+            <radialGradient id="myGradient">
+              <stop offset="0%" stop-color="grey" />
+              <stop offset="100%" stop-color="black" />
+            </radialGradient>
+          </defs>
+        <path id = 'base' d="m15 272.5"></path> 
+        <path id = "layer0"  d="m25 272.5" style="stroke-linecap:round;"></path> 
+        <path id ="drawlayer1"  d="M25.75 111.75 h398.5 v-48.5 h-398.5 v48.5 l1.5 -1.5 h395.5 v-45.5 h-395.5 v45.5 l1.5 -1.5 h392.5 v-42.5 h-392.5 v42.5" ></path>
+        <path id ="drawlayer2"  d="M25.75 111.75 h398.5 v-48.5 h-398.5 v48.5 l1.5 -1.5 h395.5 v-45.5 h-395.5 v45.5 l1.5 -1.5 h392.5 v-42.5 h-392.5 v42.5 v-42.5" ></path>
+        <path d="M25.75 111.75 h398.5 v-48.5 h-398.5 v48.5 l1.5 -1.5 h395.5 v-45.5 h-395.5 v45.5 " ></path>
+        <path d="M25.75 111.75 h398.5 v-48.5 h-398.5 v48.5 l1.5 -1.5 h395.5 v-45.5 h-395.5 v45.5 v-45.5" ></path>
+        <path id ="drawlayer5"  d="M25.75 111.75 h398.5 v-48.5 h-398.5 v48.5 l1.5 -1.5 h395.5 v-45.5 h-395.5 v45.5 l1.5 -1.5 h392.5 v-42.5 h-392.5 v42.5" ></path>
+        <path id ="drawlayer6"  d="M25.75 111.75 h398.5 v-48.5 h-398.5 v48.5 l1.5 -1.5 h395.5 v-45.5 h-395.5 v45.5 l1.5 -1.5 h392.5 v-42.5 h-392.5 v42.5 v-42.5" ></path>
+
+    </g>
+</svg>
+<div id='image'><img id = "img0" style="position: absolute; left: 80px; bottom: 133.6px; height:75px; width:50px; cursor:move;" title= "Extruder" src="Images/extruder.png" onclick="print();"/></div>
+<div id='stopwatch' style="position: absolute; z-index: 100;" >
+  <img id = "stopwatch0" style="position: absolute; left: 286.25px; top: 205px; height:180px; width:147.6px; cursor: pointer;" title= "Stopwatch" src="Images/stopwatch.png" />
+  <img id = "stopwatch0_" style="position: absolute; left: 286.25px; top: 205px; height:180px; width:147.6px; visibility: hidden;" title= "Stopwatch" src="Images/stopwatch.png" />
+  <img id = "stopwatch00" style="position: absolute; left: 286.25px; top: 205px; height:180px; width:147.6px; cursor: pointer; visibility: hidden;" title= "Stopwatch" src="Images/stopwatch.png" />
+  <img id = "stopwatch1" style="position: absolute; left: 286.25px; top: 205px;  height:180px; width:147.6px;; cursor: pointer; visibility: hidden;" title= "Stopwatch" src="Images/stopwatchstartstop.png" />
+  <img id = "stopwatch3" style="position: absolute; left: 286.25px; top: 205px;  height:180px; width:147.6px;; cursor: pointer; visibility: hidden;" title= "Stopwatch" src="Images/stopwatchreset.png" />
+  <p id="dispres" style="position:absolute;left:310px;visibility: hidden; top:252.5px; font-family:verdana; font-size:20px;">00:00:00</p>
+</div>
+
+</div>
+
+</div>
+
+<!--Step3	-->	
+<div class="simsubscreen" id="canvas3" style="visibility:hidden">
+<strong class="incanvas">STEP &nbsp;</strong><span class="circlebg">&nbsp;3&nbsp;</span>
+<p class="steptext" style="font-family:verdana; font-size:14px;">&nbsp;Note down the time</p>
+<table id="table1" border=1 style="text-align:center; width:600px; visibility: hidden; position: absolute; top: 100px;">
+<tr>
+<td style="padding:10px;">Layer Height(mm)</td>
+<td style="padding:10px;">Print Time(s)</td>
+</tr>
+<tr>
+<td id="0-1" style="padding:10px;"></td>
+<td id="0-2" style="padding:10px;"><input id="timeval" type="text" style="border:none; border-bottom: 1px solid; width:65px;" required ></td>
+</tr>
+</table>
+<input id="check3" type="button" name="check" value="Check" style="position:absolute; left:630px; top:125px;"/>
+<input id="result" type="button" name="result" value="Result" style="position:absolute; visibility:hidden; left:630px; top:125px;"/>
+<input id="hint" type="button" name="check" value="Hint" style="position:absolute; left:630px; top:165px;"/>
+<span id="formula" style="font-family:verdana; font-style:normal; border:1px solid black; padding:15px;position:absolute; left: 300px; top: 250px; visibility:hidden;">Time(in min)= <span class="frac"><sup>Hour x 3600 + Minute x 60 + Second</sup><span>&frasl;</span><sub>60</sub></span></span>
+<p id="rw" style="color:#32CD32; font-size:22px; position:absolute; left:510px; top:190px; visibility:hidden;">&#10004;</p>
+<img id ="stopwatch2" style="position: absolute; left: 100px; bottom: 70px; height:180px; width:147.6px;" title="Roughness tester" src="Images/stopwatch.png" />
+<p id="dispres2" style="position:absolute;left:127px;visibility: hidden; top:327.5px; font-family:verdana; font-size:20px;"> </p>
+</div>
+
+<!--Step4	-->	
+<div class="simsubscreen" id="canvas4" style="visibility:hidden">
+  <strong class="incanvas" id="ob"><h3>Observations: </h3></strong>
+
+    <table id="table2" border=1 style="text-align:center; width:600px; visibility: hidden;">
+        <tr>
+        <td style="padding:10px;">Trial</td>
+        <td style="padding:10px;">Layer Height(mm)</td>
+        <td style="padding:10px;">Print Time(s)</td>
+        </tr>
+        <tr>
+        <td style="padding:10px;">1</td>
+        <td id="1-1" style="padding:10px;"></td>
+        <td id="1-2" style="padding:10px;"></td>
+        </tr>
+        <tr>
+        <td style="padding:10px;">2</td>
+        <td id="2-1" style="padding:10px;"></td>
+        <td id="2-2" style="padding:10px;"></td>
+        </tr>
+        <tr>
+        <td style="padding:10px;">3</td>
+        <td id="3-1" style="padding:10px;"></td>
+        <td id="3-2" style="padding:10px;"></td>
+        </tr>
+        <tr>
+        <td style="padding:10px;">4</td>
+        <td id="4-1" style="padding:10px;"></td>
+        <td id="4-2" style="padding:10px;"></td>
+        </tr>
+    </table>
+ 
+ 
+  <div id="inferenceDiv" style="visibility:hidden; position:absolute; left:10px; top:290px;">
+    <strong class="incanvas" id="ob" ><h3>Inference: </h3></strong>
+    <div id="inference" style="background-color:grey; color:white; padding:7.5px; border-radius:5px;">
+        <p>How does the print time change with increase in layer height?</p>
+        <input type="radio" name="inf" value="1">&nbsp;Increases</br>
+        <input type="radio" name="inf" value="2">&nbsp;Decreases</br>
+        <input type="radio" name="inf" value="3">&nbsp;Stays the same</br></br>
+        <input type="button" value="Submit" onclick="checkInference();"/><span  id="ans" style="visibility:hidden;"></span>
+        <!--<p id="ans" style="visibility:hidden;"></p>-->
+    </div>
+  </div>
+  <p id="infAns" style="display:none; font-weight:bold; position:absolute; left:10px; top:350px; text-align:justify; width:700px;"></p>
+</div>
+
+<div id="notes" style="position:absolute; background-color:grey; color:white; padding:7.5px; border-radius:5px; visibility:hidden; text-align:justify;"></div>
+
+<div id="questDiv" style="position:absolute; background-color:grey; color:white; padding:7.5px; border-radius:5px; visibility:hidden; text-align:justify;">
+<p id="q"></p><select id="answer" >	
+</select>
+<p id="a"></p>
+</div>
+
+
+<!--Trial text	-->
+<div id="">	
+<p id="trial" style="text-transform: uppercase;visibility :hidden;font-weight: bold;font-family:verdana; "><strong>Trial = </strong></p>
+</div>
+
+	
+<!--next  Arrow	-->	
+<div id="nav">
+	<img id="nextButton" style="z-index: 10;" onclick="navNext(); " src="Images/Next.png" />
+</div>
+
+<!--Blinking Arrow	-->	
+<img class ="" id="arrow1" style="visibility:hidden" src="Images/arrow1.png"/>
+
+<div id="copyright"> &copy; 2020 SOLVE - The Virtual Lab @ NITK Surathkal, Department of Mechanical Engineering</div>
+</body>
+<script type="text/javascript" src= "js/ptlhsvg.js"></script>
+</html>

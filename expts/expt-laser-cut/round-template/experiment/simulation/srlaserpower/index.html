@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+
+<title>SOLVE</title>
+<link rel="stylesheet" href="css/srlp.css" />
+<link rel="stylesheet" href="css/mathstyle.css" />
+<script type="text/javascript" src= "js/jquerymin.js"></script>
+<script type="text/javascript" src= "js/srlp.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+
+<script>
+var simsubscreennum=0;
+var temp=0;
+var lnt=0;
+var n;
+</script>
+<style>
+.popup
+{
+	border-radius:5px;
+	background-color:white;
+	color:black;
+	padding:5px;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 500px;
+  background-color: black;
+  color: #fff;
+  border-radius: 6px;
+  padding: 10px 10px 10px 10px;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 100;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+
+</style>
+
+</head>
+
+<body style="margin:0; font-family:verdana; font-size:14px;">
+<!--Simulation Screen start		-->
+<div id="simscreen">
+
+<!--Title of Simulation		-->
+<div id="title"><h3 style="font-size:25px;">Effect of laser power on surface roughness</h3></div>
+
+<!--SubScreen Home	-->
+<div class="simsubscreen" id="canvas0">
+  <h4 class="incanvas" style="font-family:verdana; ">Objective:</h4>
+  <p class="incanvas" style="font-family:verdana; font-size:15px;">To determine the effect of laser power on surface roughness.</p></br>
+  <h4 class="incanvas" style="font-family:verdana; ">Apparatus used:</h4>
+  <p class="incanvas" style="font-family:verdana; font-size:14px;">Laser Cutting Machine, Surface roughness tester etc.</p>
+  &nbsp;<span class="tooltip" style="border-bottom:1px dotted ; color:red; position:absolute; top:130px;"><strong>Description</strong>
+  <span  class="tooltiptext" style="text-align:justify;"><strong style="color:red;">Surface roughness</strong> is measured as R<sub>a</sub> or average surface roughness. The R<sub>a</sub> value indicates the average surface roughness for the length of the measurement performed, i.e.,
+                                                                             the average difference between peaks and valleys.<br><br><strong style="color:red;">Laser power</strong> is the power of the laser beam that is used to cut the stainless steel sheet.</span></span>
+  <img id=""      style="position: absolute; left:550px; top: 275.000px; height:150px;width:75px;" title="Roughness tester" src="Images/devicemain.png"/>
+  <img id="" style="position: absolute; left: 175px; top: 270px; height:225.871px;width:306.583px;" title="Laser cutter" src="Images/machineclose.png"/>
+  <img id="" style="position:absolute; left:20px; top:160px; height: 344px; width: 121px;" title="Human" src="Images/human.png" />
+</div>
+
+<!--Step1	-->
+<div class="simsubscreen" id="canvas1" style="visibility:hidden">
+  <strong id="titlestep" class="incanvas">STEP </strong>
+  <span class="circlebg" id="stepnumber">&nbsp;1&nbsp;</span>
+  <p id="pumptext" class="steptext" style="font-family:verdana; font-size:14px;">Note the laser power value</p>
+  <p id="can6-1" style="position:absolute;top: 140px; left:60px; font-family:verdana; font-size:14px;">Laser power = _____ KW</p>
+  <p id="laserpower" style="position:absolute; visibility: hidden; top: 140px; left:60px; font-family:verdana; font-size:14px;"></p>
+  <p id="can6-3" style="position:absolute;top: 180px; left:60px; font-family:verdana; font-size:14px;">Cutting speed =  _____ mm/min</p>
+  <p id="can6-4" style="position:absolute;top: 220px; left:60px; font-family:verdana; font-size:14px;">Assist gas pressure = _____ bar</p>
+</div>
+
+<!--Step2	-->
+<div class="simsubscreen" id="canvas2" style="visibility:hidden">
+  <strong class="incanvas">STEP &nbsp;</strong><span class="circlebg">&nbsp;2&nbsp;</span>
+  <p class="steptext" style="font-family:verdana; font-size:14px;">&nbsp;Insert the 400*200*5 mm sheet to the laser cutting machine.</p>
+
+  <img id = "machineclose" style="position: absolute;   left:400px;    bottom: 100px;   height:223.234px; width:304.275px; animation:none; visibility:hidden; z-index: 1; " src="Images/machineclose.png"/>
+  <img id = "machineopen"  style="position: absolute;   left:400px;    bottom: 100px;   height:330.783px; width:304.948px; animation:none; visibility:hidden; z-index: 1; " src="Images/machineopen.png"/>
+  <img id = "machineopensheet"  style="position: absolute;   left:400px;    bottom: 100px;   height:330.783px; width:304.948px; animation:none; visibility:hidden; z-index: 1; " src="Images/machineopensheet.png"/>
+  <img id = "machineclosesheet"  style="position: absolute;   left:400px;    bottom: 100px;   height:223.234px; width:304.275px; animation:none; visibility:hidden; z-index: 1; " src="Images/machineclosesheet.png"/>
+  <img id="sheet1" style="position: absolute; left:20px; top:200px; width: 200px; height: 100px; visibility:hidden;"  src="Images/sheet.png"/>
+  <img id="sheet2" style="position: absolute; left:20px; top:200px; width: 200px; height: 100px; visibility:hidden;"  src="Images/sheet.png"/>
+</div>
+
+<!--Step3	-->
+<div class="simsubscreen" id="canvas3" style="visibility:hidden">
+  <strong id="titlestep" class="incanvas">STEP </strong>
+  <span class="circlebg" id="stepnumber">&nbsp;3&nbsp;</span>
+  <p id="pumptext" class="steptext" style="font-family:verdana; font-size:14px;">Select the shape and size and cut the sheet</p>   <br><br>
+  <div>
+    <label for="shape">Choose a Shape:</label>
+    <select name="shape" id="shape">
+      <option value="0">Rectangle</option>
+      <option value="1">Square</option>
+      <!-- <option value="2">Circle</option> -->
+    </select>
+    <div id="rectinput" style="visibility: hidden; position: absolute; left: 250px;">
+      <label id ="rectlabel1" for="rectlength"  style="font-family:verdana; font-size:14px; " >Length =</label> <input id="rectlength" type="text" placeholder="(50-300)"  style="border:none; border-bottom: 1px solid; width:55px;" required >&nbsp;&nbsp;&nbsp;&nbsp;<label id ="rectlabel1" for="rectlength" style="font-family:verdana; font-size:14px; ">mm</label>&nbsp;&nbsp;&nbsp;&nbsp;<label id ="rectlabel2" for="rectbreadth" style="  font-family:verdana; font-size:14px; " >Breadth =</label> <input id="rectbreadth" type="text"  placeholder="(30-90)" style="  border:none; border-bottom: 1px solid; width:55px;" required >&nbsp;&nbsp;&nbsp;&nbsp;<label id ="rectlabel2" for="rectbreadth" style="  font-family:verdana; font-size:14px; ">mm</label>
+    </div>
+    <div id="squareinput" style="visibility: hidden; position: absolute; left: 250px;">
+      <label id ="squarelabel" for="squareside"  style="font-family:verdana; font-size:14px; " >Side =</label> <input id="squareside" type="text"  placeholder="(40-90)"   style="border:none; border-bottom: 1px solid; width:55px;" required >&nbsp;&nbsp;&nbsp;&nbsp;<label id ="squarelabel" for="squareside" style="font-family:verdana; font-size:14px; ">mm</label>
+    </div>
+    <!-- <div id="circinput" style="visibility: hidden; position: absolute; left: 250px;">
+      <label id ="circlabel" for="circle" style="font-family:verdana; font-size:14px; " >Diameter =</label> <input id="circle" type="text" style="border:none; border-bottom: 1px solid; width:55px;" required >&nbsp;&nbsp;&nbsp;&nbsp;<label id ="circlabel" for="circle" style="font-family:verdana; font-size:14px; ">mm</label>
+    </div> -->
+    <br><br>
+    <div>
+      <input id ="shapesubmit" type="submit" value="Submit Shape">
+      <input id ="dimsubmit" type="submit" value="Submit Dimensions">
+    </div>
+  </div>
+	<div id = "step-2" class = "step" style="font-family:verdana; font-size:14px; visibility:hidden">
+
+     <svg id = "specimen2"  class = "svg" width="890" height="425" version="1.1" viewBox="0 0 890 425" xmlns="http://www.w3.org/2000/svg">
+       <g fill="none" >
+         <defs>
+           <radialGradient id="myGradient">
+             <stop offset="0%" stop-color="grey" />
+             <stop offset="100%" stop-color="black" />
+           </radialGradient>
+         </defs>
+         <circle id = 'circ' cx="390" cy="224.5"  transform="rotate(-90 390 224.5)"style="z-index: 10;" ></circle>
+       </g>
+     </svg>
+
+     <div id="image" style="visibility:hidden; display: none;">
+       <img id = "lasertube" style="position: absolute;   left:280.281px;    top: 16.683px;   height:62.814px; width:322.960px; animation:none; visibility:visible; z-index: 1; " src="Images/co2 laser.png"/>
+       <img id = "xaxisfront" style="position: absolute;  left:141.721px; top: 310.116px;   height:16.438px;   width:480.019px; visibility:visible; " title= "Axis" src="Images/xaxisfront.png"/>
+       <img id = "lasernozzle0" style="position: absolute; top: 289.455px;  height:68.574px;     width:37.111px; visibility:hidden;" title= "Laser0" src="Images/laser nozzle.png"/>
+       <img id = "lasernozzle01" style="position: absolute; top: 289.455px;  height:68.574px;     width:37.111px; visibility:hidden;" title= "Laser0" src="Images/laser nozzle.png"/>
+       <img id = "lasernozzle02" style="position: absolute; top: 289.455px;  height:68.574px;     width:37.111px; visibility:hidden;" title= "Laser0" src="Images/laser nozzle.png"/>
+       <img id = "lasernozzle03" style="position: absolute; top: 289.455px;  height:68.574px;     width:37.111px; visibility:hidden;" title= "Laser0" src="Images/laser nozzle.png"/>
+       <img id = "lasernozzle1" style="position: absolute; left:191.740px;  top: 289.455px;    height:68.574px;     width:37.111px; visibility:visible;" title= "Laser" src="Images/laser nozzle.png"/>
+       <img id = "lasernozzle2" style="position: absolute; top: 289.455px;     height:99.043px;     width:37.111px; visibility:hidden;" title= "Laser" src="Images/laserbeam.png"/>
+       <img id = "lasernozzle3" style="position: absolute; top: 289.455px;     height:99.043px;     width:37.111px; visibility:hidden;" title= "Laser" src="Images/laserbeam.png"/>
+       <img id = "lasernozzle4" style="position: absolute; top: 289.455px;     height:99.043px;     width:37.111px; visibility:hidden;" title= "Laser" src="Images/laserbeam.png"/>
+       <img id = "lasernozzle5" style="position: absolute; top: 289.455px;     height:99.043px;     width:37.111px; visibility:hidden;;" title= "Laser" src="Images/laserbeam.png"/>
+       <img id = "lasernozzle6" style="position: absolute; top: 289.455px;     height:68.574px;     width:37.111px; visibility:hidden; " title= "Laser" src="Images/laser nozzle.png"/>
+       <img id = "basetop" style="position: absolute;     left:106.829px;      top: 10.205px;    height:240.413px;    width:566.342px; visibility:visible" src="Images/basetop.png" />
+       <img id = "basetop2" style="position: absolute;     left:673.171px;      top: 10px;    height:241px;    width:212px; visibility:visible" src="Images/basetop2.png" />
+
+       <img id = "control" style="position: absolute;  left:680px;   top: 120px;     height:125px;   width:195px; visibility:visible" src="Images/control.png" />
+       <img id = "esc"     style="position: absolute;  left: 816.203px;   top: 178.014px;  width: 22px;   height: 18px;  visibility:visible;cursor: pointer; z-index: 10;" title= "Esc"         src="Images/esc.png" />
+       <img id = "enter"   style="position: absolute;  left: 842.198px;   top: 178.069px;  width: 22px;   height: 18px;  visibility:visible;cursor: pointer; z-index: 10;" title= "Enter"       src="Images/enter.png" />
+       <img id = "origin"  style="position: absolute;  left: 816.203px;   top: 199.947px;  width: 22px;   height: 18px;  visibility:visible;cursor: pointer; z-index: 10;" title= "Origin"      src="Images/origin.png" />
+       <img id = "frame"   style="position: absolute;  left: 842.198px;   top: 199.947px;  width: 22px;   height: 18px;  visibility:visible;cursor: pointer; z-index: 10;" title= "Frame"       src="Images/frame.png" />
+       <img id = "file"    style="position: absolute;  left: 816.203px;   top: 221.883px;  width: 22px;   height: 18px;  visibility:visible;cursor: pointer; z-index: 10;" title= "File"        src="Images/file.png" />
+       <img id = "start0"   style="position: absolute;  left: 842.198px;   top: 221.883px;  width: 22px;   height: 18px;  visibility:visible;cursor: pointer; z-index: 10;" title= "Start-Pause" src="Images/startpause.png" />
+       <img id = "start"   style="position: absolute;  left: 842.198px;   top: 221.883px;  width: 22px;   height: 18px;  visibility:hidden;cursor: pointer; z-index: 10;" title= "Start-Pause" src="Images/startpause.png" />
+       <img id = "pause"   style="position: absolute;  left: 842.198px;   top: 221.883px;  width: 22px;   height: 18px;  visibility:hidden;cursor: pointer; z-index: 10;" title= "Start-Pause" src="Images/startpause.png" />
+       <img id = "maxpower"style="position: absolute;  left: 790.208px;   top: 221.883px;  width: 22px;   height: 18px;  visibility:visible;cursor: pointer; z-index: 10;" title= "MaxPower"    src="Images/maxpower.png" />
+       <img id = "minpower"style="position: absolute;  left: 764.214px;   top: 221.883px;  width: 22px;   height: 18px;  visibility:visible;cursor: pointer; z-index: 10;" title= "MinPower"    src="Images/minpower.png" />
+       <img id = "speed"   style="position: absolute;  left: 738.219px;   top: 221.883px;  width: 22px;   height: 18px;  visibility:visible;cursor: pointer; z-index: 10;" title= "Speed"       src="Images/speed.png" />
+       <img id = "pulse"   style="position: absolute;  left: 712.224px;   top: 221.883px;  width: 22px;   height: 18px;  visibility:visible;cursor: pointer; z-index: 10;" title= "Pulse"       src="Images/pulse.png" />
+       <img id = "reset"   style="position: absolute;  left: 683.511px;   top: 217.460px;  width: 23.75px; height: 23.75px; visibility:visible;cursor: pointer; z-index: 10;" title= "Reset"    src="Images/reset.png" />
+       <img id = "estop" style="position: absolute;     left:741.797px;        top: 26.082px;     height:79.566px;         width:77.751px; visibility:visible;cursor: pointer; z-index: 10;" src="Images/estop.png" />
+			 <img id = "estop1" style="position: absolute;     left:741.797px;        top: 26.082px;     height:79.566px;         width:77.751px; visibility:hidden;cursor: pointer; z-index: 10;" src="Images/estop.png" />
+       <img id = "uparrow"   style="position: absolute;  left: 834.667px;   top: 128.353px;  width: 8.55px;   height: 7.176px;  visibility:hidden; cursor: pointer; z-index: 20;" title= "Uparrow" src="Images/uparrow.png" />
+       <p id="speedval" style="position:absolute;right:140.22px ; visibility: hidden; bottom:230px;  font-family:verdana; font-size:18px; z-index: 20;"> </p>
+       <p id="unit" style="position:absolute;left:750px;visibility: hidden; bottom:240px;  font-family:verdana; font-size:10px; z-index: 20;"> mm/min </p>
+
+       <img id = "xaxis0" style="position: absolute;       left:141.519px;     height:43.162px;     width:480.423px; visibility:hidden; " src="Images/xaxis.png"/>\
+       <img id = "xaxis01" style="position: absolute;       left:141.519px;     height:43.162px;     width:480.423px; visibility:hidden; "  src="Images/xaxis.png"/>\
+       <img id = "xaxis02" style="position: absolute;       left:141.519px;     height:43.162px;     width:480.423px; visibility:hidden; " src="Images/xaxis.png"/>\
+       <img id = "xaxis03" style="position: absolute;       left:141.519px;     height:43.162px;     width:480.423px; visibility:hidden; " src="Images/xaxis.png"/>\
+       <img id = "xaxis1" style="position: absolute;       left:141.519px;     top: 94.914px;    height:43.162px;     width:480.423px; visibility:visible; " title= "Axis" src="Images/xaxis.png"/>\
+       <img id = "xaxis2" style="position: absolute;      left:141.519px; height:43.162px;     width:480.423px; visibility:hidden; " title= "Axis" src="Images/xaxiswithlaser.png"/>
+       <img id = "xaxis3" style="position: absolute;      left:141.519px; height:43.162px;     width:480.423px; visibility:hidden; " title= "Axis" src="Images/xaxiswithlaser.png"/>
+       <img id = "xaxis4" style="position: absolute;      left:141.519px; height:43.162px;     width:480.423px; visibility:hidden; " title= "Axis" src="Images/xaxiswithlaser.png"/>
+       <img id = "xaxis5" style="position: absolute;      left:141.519px; height:43.162px;     width:480.423px; visibility:hidden; " title= "Axis" src="Images/xaxis.png"/>
+       <img id = "lasertop0" style="position: absolute;    height:37.917px;     width:37.111px; visibility:visible; z-index:20; " title= "Laser0" src="Images/lasertop.png"/>
+       <img id = "lasertop01" style="position: absolute;    height:37.917px;     width:37.111px; visibility:visible; z-index:20; " title= "Laser0" src="Images/lasertop.png"/>
+       <img id = "lasertop02" style="position: absolute;    height:37.917px;     width:37.111px; visibility:visible; z-index:20; " title= "Laser0" src="Images/lasertop.png"/>
+       <img id = "lasertop03" style="position: absolute;    height:37.917px;     width:37.111px; visibility:visible; z-index:20; " title= "Laser0" src="Images/lasertop.png"/>
+       <img id = "lasertop04" style="position: absolute;    height:37.917px;     width:37.111px; visibility:visible; z-index:20; " title= "Laser0" src="Images/lasertop.png"/>
+       <img id = "lasertop1" style="position: absolute;    left:191.740px;  top: 92.696px;   height:37.917px;     width:37.111px; visibility:visible; z-index:20; " title= "Laser" src="Images/lasertop.png"/>
+       <img id = "lasertop2" style="position: absolute;    height:37.917px;     width:37.111px; visibility:hidden; z-index: 20; animation:none; " title= "Laser" src="Images/lasertop.png"/>
+       <img id = "lasertop3" style="position: absolute;    height:37.917px;     width:37.111px; visibility:hidden; z-index: 20; animation:none;" title= "Laser" src="Images/lasertop.png"/>
+       <img id = "lasertop4" style="position: absolute;    height:37.917px;     width:37.111px; visibility:hidden; z-index: 20; animation:none;" title= "Laser" src="Images/lasertop.png"/>
+       <img id = "lasertop5" style="position: absolute;    height:37.917px;     width:37.111px; visibility:hidden; z-index: 20; animation:none;" title= "Laser" src="Images/lasertop.png"/>
+       <img id = "lasertop6" style="position: absolute;    height:37.917px;     width:37.111px; visibility:hidden; z-index: 20; animation:none;" title= "Laser" src="Images/lasertop.png"/>
+       <img id = "base" style="position: absolute;        left:107.031px;   top:319.394px;    height:101.651px;  width:565.939px; visibility:visible" src="Images/base.png"/>
+       <img id = "mirror1" style="position: absolute;       left:143.574px;   top:33.296px;    height:24.881px;  width:26.950px; visibility:visible" src="Images/mirror1.png"/>
+       <img id = "mirror2" style="position: absolute;       left:84.975px;   top:149.598px;    height:30.828px;  width:30.828px; z-index: 20; visibility:hidden" src="Images/mirror2.png"/>
+       <img id = "mirror2front" style="position: absolute;  left:143.746px;   top:296.401px;    height:14.118px;  width:24.589px; visibility:visible" src="Images/mirror2front.png"/>
+       <img id = "mirror3" style="position: absolute;       left:158.787px; top:374.13px;    height:25.054px;  width:25.054px; z-index: 30;  visibility:hidden" src="Images/mirror3.png"/>
+       <img id = "material" style="position: absolute;    left:187.706px; top: 387.968px;   height:17.345px;   width:404.588px; animation:none; visibility:visible; z-index: 1; " src="Images/material.png"/>
+     </div>
+
+
+     <!-- <div id="forcircle" style="visibility:hidden; position: absolute; z-index: 20;" class="rotate">
+       <div id="forcirclechild" style="position: absolute; height: 72px; width:46px; " class="rotate">
+         <img id = "lasertopcir"  style="position: absolute;    height:47px; width:46px; visibility:hidden; z-index: 20; " title= "Laser" src="lasertop.png"/>
+       </div>
+     </div> -->
+
+     <svg id = "specimen" class = "svg2" width="890" height="425" version="1.1" viewBox="0 0 890 425" xmlns="http://www.w3.org/2000/svg">
+       <g fill="none" >
+       <defs>
+         <radialGradient id="myGradient">
+           <stop offset="0%" stop-color="grey" />
+           <stop offset="100%" stop-color="black" />
+         </radialGradient>
+       </defs>
+       <path id = "laserfront" style="z-index: 50; "></path>
+       <path id = "laserfront1" style="z-index: 50; "></path>
+       <path id = "laser" style="z-index: 50; " ></path>
+       <path id = "laservertical1" style="z-index: 50; " ></path>
+       <path id = "laservertical2" style="z-index: 50; " ></path>
+       <path id = "laservertical3" style="z-index: 50; " ></path>
+       <path id = "laserhorizontalfront1" style="z-index: 50; " ></path>
+       <path id = "laserhorizontalfront2" style="z-index: 50; " ></path>
+       <path id = "laserhorizontalfront3" class="draw" style="z-index: 50; " ></path>
+       <path id = "laserpart1" d="m339 48.5h-179 v40.6" class="draw" style="visibility: hidden; z-index: 100; stroke-linecap:butt; stroke-width:1.4px" ></path>
+       <path id = "line" d="" class="draw" style="visibility: visible; z-index: 100; stroke-linecap:butt" ></path>
+       <path id = "line2" d="" class="draw" style="visibility: visible; z-index: 100; stroke-linecap:butt" ></path>
+       <path id = "baseroller" ></path>
+       <path id = "layer11" d="M38, 240.75 l412.5 0.001"></path>
+       <path id = "drawlayer6"></path>
+       <path id = "layer31"></path>
+       </g>
+     </svg>
+
+     <div id="laserhorizontal" style="position: relative; left:0px; height:43.162px; width:677.5px; visibility: hidden;" >
+       <svg id = "specimen3"  class = "svg3" width="677.5" height="43.162" version="1.1" viewBox="0 0 677.5 43.162" xmlns="http://www.w3.org/2000/svg">
+         <g fill="none" >
+           <defs>
+             <radialGradient id="myGradient">
+               <stop offset="0%" stop-color="grey" />
+               <stop offset="100%" stop-color="black" />
+             </radialGradient>
+           </defs>
+           <path id = "laserhorizontalline" class="draw" style="z-index: 100; " ></path>
+           <path id = "laserhorizontalline1" class="draw" style="z-index: 100;" ></path>
+           <path id = "laserhorizontalline2" class="draw" style="z-index: 100;" ></path>
+           <path id = "laserhorizontalline3" class="draw" style="z-index: 100;" ></path>
+         </g>
+       </svg>
+     </div>
+
+     <div id="laserhorizontal2"style="position: absolute; left:0px; height:43.162px; width:677.5px; visibility: hidden;">
+       <svg id = "specimen4"  class = "svg4" width="677.5" height="43.162" version="1.1" viewBox="0 0 677.5 43.162" xmlns="http://www.w3.org/2000/svg">
+         <g fill="none" >
+           <defs>
+             <radialGradient id="myGradient">
+               <stop offset="0%" stop-color="grey" />
+               <stop offset="100%" stop-color="black" />
+             </radialGradient>
+           </defs>
+           <path id = "laserhorizontalline22" class="draw" style="z-index: 100; " ></path>
+         </g>
+       </svg>
+     </div>
+   </div>
+</div>
+
+<!--Step4	-->
+<div class="simsubscreen" id="canvas4" style="visibility:hidden">
+<strong class="incanvas">STEP &nbsp;</strong><span class="circlebg">&nbsp;4&nbsp;</span>
+<p class="steptext" style="font-family:verdana; font-size:14px;">&nbsp;Measure the surface roughness </p>
+<div id = "step-1" class = "step3" style="font-family:verdana; font-size:14px; visibility:hidden">
+<svg id = "specimen5"  class = "svg5" width="800" height="490" version="1.1" viewBox="0 0 800 490" xmlns="http://www.w3.org/2000/svg">
+  <g fill="none" >
+    <defs>
+      <radialGradient id="myGradient">
+        <stop offset="0%" stop-color="grey" />
+        <stop offset="100%" stop-color="black" />
+      </radialGradient>
+    </defs>
+    <path id = "wire1" d="m698.96 117.43s2.7915-11.395 2.7915-22.098c0-7.5055-1.3726-14.671-6.0426-17.33-157.05-89.417 12.279 385.02-97.533 348.28-12.516-4.1865-9.7534-32.857-9.7534-32.857" fill="none" stroke-width="3.5298" class="drawwire" style="z-index: 100; visibility:hidden;" ></path>
+    <path id = "wire2" style="z-index: 100; visibility:hidden;" ></path>
+    <path id = "spec" fill="none" stroke-width="2" style="z-index: 100; visibility:hidden;" ></path>
+  </g>
+</svg>
+
+<img id="device" style="position: absolute; left: 646.028px; top: 113.732px; height:319.035px; width:104.322px;visibility: hidden;" title="Roughness tester" src="Images/device.png"/>
+<img id ="probe1" style="position: absolute; left: 560px; top: 126.432px; height:267.687px; width:49.134px; cursor:move;visibility: hidden;" title="Roughness tester" src="Images/probe1.png">
+<img id ="probe" style="position: absolute; height:42.404px; width:251.856px; cursor:move;visibility: hidden; z-index: 10;" title="Roughness tester" src="Images/probe.png" >
+<img id ="probebase" style="position: absolute; height:39.140px; width:199.103px; visibility: hidden; cursor:move;visibility: hidden; z-index: 20;" title="Roughness tester" src="Images/probebase.png" >
+
+<p id="sr1" style=" position:absolute;visibility: hidden; top: 450px; left:40px;font-family:verdana; font-size:14px;">Surface Roughness of specimen = _____ &#181m</p>
+<p id="sr2" style=" position:absolute;visibility: hidden; top: 420px; left:60px;font-family:verdana; font-size:14px;"></p>
+<p id="dispres" style="position:absolute;left:677px;visibility: hidden; top:172px;  font-family:verdana; font-size:18px;"> </p>
+</div>
+</div>
+
+<!--Step5	-->
+<div class="simsubscreen" id="canvas5" style="visibility:hidden">
+  <strong class="incanvas" id="ob"><h3>Observations: </h3></strong>
+  <table id="table" border=1 style="text-align:center; width:600px;">
+  <tr>
+  <td style="padding:10px;">Trial</td>
+  <td style="padding:10px;">Laser power(KW)</td>
+  <td style="padding:10px;">Surface Roughness(&#181m)</td>
+  </tr>
+  <tr>
+  <td style="padding:10px;">1</td>
+  <td id="1-1" style="padding:10px;"></td>
+  <td id="1-2" style="padding:10px;"></td>
+  </tr>
+  <tr>
+  <td style="padding:10px;">2</td>
+  <td id="2-1" style="padding:10px;"></td>
+  <td id="2-2" style="padding:10px;"></td>
+  </tr>
+  <tr>
+  <td style="padding:10px;">3</td>
+  <td id="3-1" style="padding:10px;"></td>
+  <td id="3-2" style="padding:10px;"></td>
+  </tr>
+  <tr>
+  <td style="padding:10px;">4</td>
+  <td id="4-1" style="padding:10px;"></td>
+  <td id="4-2" style="padding:10px;"></td>
+  </tr>
+  </table>
+
+  <div id="inferenceDiv" style="visibility:hidden; position:absolute; left:10px; top:290px;">
+  <strong class="incanvas" id="ob" ><h3>Inference: </h3></strong>
+  <div id="inference" style="background-color:grey; color:white; padding:7.5px; border-radius:5px;">
+  <p>How does the surface roughness change with increase in laser power?</p>
+  <input type="radio" name="inf" value="1">&nbsp;Increases</br>
+  <input type="radio" name="inf" value="2">&nbsp;Decreases</br>
+  <input type="radio" name="inf" value="3">&nbsp;Stays the same</br></br>
+  <input type="button" value="Submit" onclick="checkInference();"/><span  id="ans" style="visibility:hidden;"></span>
+  <!--<p id="ans" style="visibility:hidden;"></p>-->
+  </div>
+  </div>
+  <p id="infAns" style="display:none; font-weight:bold; position:absolute; left:10px; top:350px; text-align:justify; width:700px;"></p>
+  </div>
+
+<div id="notes" style="position:absolute; background-color:grey; color:white; padding:7.5px; border-radius:5px; visibility:hidden; text-align:justify;"></div>
+
+<div id="questDiv" style="position:absolute; background-color:grey; color:white; padding:7.5px; border-radius:5px; visibility:hidden; text-align:justify;">
+<p id="q"></p><select id="answer" >
+</select>
+<p id="a"></p>
+</div>
+
+
+<!--Trial text	-->
+<div id="">
+<p id="trial" style="text-transform: uppercase;visibility :hidden;font-weight: bold;font-family:verdana; "><strong>Trial = </strong></p>
+</div>
+
+
+<!--next  Arrow	-->
+<div id="nav">
+	<img id="nextButton" style="z-index: 10;" onclick="navNext(); " src="Images/Next.png" />
+</div>
+
+<!--Blinking Arrow	-->
+<img class ="" id="arrow1" style="visibility:hidden" src="Images/arrow1.png"/>
+
+<div id="copyright"> &copy; 2020 SOLVE - The Virtual Lab @ NITK Surathkal, Department of Mechanical Engineering</div>
+</body>
+<script type="text/javascript" src= "js/srlpsvg.js"></script>
+</html>
